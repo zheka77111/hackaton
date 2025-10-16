@@ -15,25 +15,25 @@
  * Управление артефактами тестирования (учетные данные, конечные точки и т.д.).
  *  MCP серверы.
 
-* **Рабочие процессы:**
- * Основной рабочий процесс для выполнения пентеста.
- * Рабочий процесс планирования для создания плана атаки.
 
 * **Файлы:**
  * task1.ipynb - решение задачи 1.
  * task2.ipynb - решение задачи 2.
  * task3.ipynb - решение задачи 3.
  * task4.ipynb - решение задачи 4.
-
+ * [prompts.py](blanks/prompts.py) - файл с промптами.
+ * [methods_1.py](func/methods_1.py) - служебные функции.
 
 
 Для запуска проекта заполните разрешения в файле .env.template. 
 * TAVILY_API_KEY - доспук к поиску в интернете.
-* OPENAI_API_KEY - доступ к моделям OpenAI.
+* OPENAI_API_KEY - доступ к моделям OpenAI (необязательно).
 * GIGACHAT_API_KEY - доступ к моделям Gigachat.
 * CONSOLE_LOG_FILE - файл для сохранения 
 * smithery_api_key - ключ доступа к репозиторию mcp серверов smithery. https://smithery.ai/docs
 
+
+В проекте использовались две модели - GigaChat и локальная GPT-OSS, которую использовать не обязательно. Можно запускать только с GigaChat. 
 Запустите докер и выполните команду **"docker run -it --privileged --name hackathon -v /path_to_hackaton_dir:/app -p 3000:3000 kalilinux/kali-rolling"**, где path_to_hackaton_dir - путь к склонированному репозиторию hackaton. Далее в IDE подключаетесь к [докеру](https://dev.to/ctison/vscode-remote-containers-5740), получаете доступ к файлам в папке path_to_hackaton_dir.
 Работать надо из докера, т.к. используются команды Kali linux, иначе вам необходимо поставить на локальную машину такие инструменты, как nmap, 
 sqlmap, nikto, hydra, john the ripper, Metasploit framework и др.
