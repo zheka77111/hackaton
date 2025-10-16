@@ -2,7 +2,8 @@
 
 Ключевые компоненты включают:
 
-* **Агентов ИИ:**
+* **Агент ИИ:**
+ * `workflow_plan` - оркестратор.
  * `shell_agent`: Выполняет команды оболочки для тестирования.
  * `research_agent`: Проводит веб-исследование уязвимостей.
  * `critique_agent`: Консультирует и критикует процесс тестирования.
@@ -12,6 +13,7 @@
  * Выполнение команд командной строки.
  * Веб-поиск (Tavily).
  * Управление артефактами тестирования (учетные данные, конечные точки и т.д.).
+ *  MCP серверы.
 
 * **Рабочие процессы:**
  * Основной рабочий процесс для выполнения пентеста.
@@ -25,7 +27,6 @@
 
 
 
-
 Для запуска проекта заполните разрешения в файле .env.template. 
 * TAVILY_API_KEY - доспук к поиску в интернете.
 * OPENAI_API_KEY - доступ к моделям OpenAI.
@@ -33,5 +34,7 @@
 * CONSOLE_LOG_FILE - файл для сохранения 
 * smithery_api_key - ключ доступа к репозиторию mcp серверов smithery. https://smithery.ai/docs
 
-Запустите докер и выполните команду **"docker run -it --privileged --name hackathon -v /path_to_hackaton_dir:/app -p 3000:3000 kalilinux/kali-rolling"**, где path_to_hackaton_dir - путь к склонированному репозиторию hackaton. Далее в IDE подключаетесь к [докеру](https://dev.to/ctison/vscode-remote-containers-5740), получаете доступ к файлам в папке path_to_hackaton_dir, работать надо из докера, т.к. используются команды Kali linux.
+Запустите докер и выполните команду **"docker run -it --privileged --name hackathon -v /path_to_hackaton_dir:/app -p 3000:3000 kalilinux/kali-rolling"**, где path_to_hackaton_dir - путь к склонированному репозиторию hackaton. Далее в IDE подключаетесь к [докеру](https://dev.to/ctison/vscode-remote-containers-5740), получаете доступ к файлам в папке path_to_hackaton_dir.
+Работать надо из докера, т.к. используются команды Kali linux, иначе вам необходимо поставить на локальную машину такие инструменты, как nmap, 
+sqlmap, nikto, hydra, john the ripper, Metasploit framework и др.
 Запуск агентов производится в блокнотах. Обязательно проверьте IP адреса машины, которую вы используете для тестирования. На хакатоне использовалась машина, доступ к которой получали через WireGuard vpn. 
