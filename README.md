@@ -2,21 +2,20 @@
 
 Ключевые компоненты включают:
 
-* **Агент ИИ:**
+**Агент ИИ:**
  * `workflow_plan` - оркестратор.
  * `shell_agent`: Выполняет команды оболочки для тестирования.
  * `research_agent`: Проводит веб-исследование уязвимостей.
  * `critique_agent`: Консультирует и критикует процесс тестирования.
  * `planning_agent`: разрабатывает план тестирования с помощью MCP-сервера, но в этот раз не используется.
 
-* **Инструменты:**
+**Инструменты:**
  * Выполнение команд командной строки.
  * Веб-поиск (Tavily).
  * Управление артефактами тестирования (учетные данные, конечные точки и т.д.).
  *  MCP серверы.
 
-
-* **Файлы:**
+**Файлы:**
  * task1.ipynb - решение задачи 1.
  * task2.ipynb - решение задачи 2.
  * task3.ipynb - решение задачи 3.
@@ -30,11 +29,14 @@
 * OPENAI_API_KEY - доступ к моделям OpenAI (необязательно).
 * GIGACHAT_API_KEY - доступ к моделям Gigachat.
 * CONSOLE_LOG_FILE - файл для сохранения 
-* smithery_api_key - ключ доступа к репозиторию mcp серверов smithery. https://smithery.ai/docs
+* smithery_api_key, smithery_profile - ключ доступа и профиль к репозиторию mcp серверов smithery. https://smithery.ai/docs
 
 
 В проекте использовались две модели - GigaChat и локальная GPT-OSS, которую использовать не обязательно. Можно запускать только с GigaChat. 
-Запустите докер и выполните команду **"docker run -it --privileged --name hackathon -v /path_to_hackaton_dir:/app -p 3000:3000 kalilinux/kali-rolling"**, где path_to_hackaton_dir - путь к склонированному репозиторию hackaton. Далее в IDE подключаетесь к [докеру](https://dev.to/ctison/vscode-remote-containers-5740), получаете доступ к файлам в папке path_to_hackaton_dir.
+Запустите докер и выполните команду 
+```docker run -it --privileged --name hackathon -v /path_to_hackaton_dir:/app -p 3000:3000 kalilinux/kali-rolling```, где path_to_hackaton_dir - путь к склонированному репозиторию hackaton. Далее в IDE подключаетесь к [докеру](https://dev.to/ctison/vscode-remote-containers-5740), получаете доступ к файлам в папке path_to_hackaton_dir.
+
+
 Работать надо из докера, т.к. используются команды Kali linux, иначе вам необходимо поставить на локальную машину такие инструменты, как nmap, 
 sqlmap, nikto, hydra, john the ripper, Metasploit framework и др.
 Запуск агентов производится в блокнотах. Обязательно проверьте IP адреса машины, которую вы используете для тестирования. На хакатоне использовалась машина, доступ к которой получали через WireGuard vpn. 
