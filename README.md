@@ -1,44 +1,37 @@
-This project is a sophisticated, multi-agent penetration testing framework built with Python, LangChain, and LangGraph. It automates security vulnerability discovery using a team of specialized AI agents orchestrated by a central "supervisor."
+Этот проект представляет собой многоагентную платформу для тестирования на проникновение, построенную на Python, LangChain и LangGraph. Она автоматизирует обнаружение уязвимостей в системе безопасности с помощью команды специализированных агентов ИИ, управляемых центральным "супервизором".
 
-Key components include:
+Ключевые компоненты включают:
 
-*   **AI Agents:**
-    *   `shell_agent`: Executes shell commands for pentesting.
-    *   `research_agent`: Conducts web research on vulnerabilities.
-    *   `critique_agent`: Advises and critiques the pentesting process.
-    *   `planing_agent`: Develops the pentesting plan by using MCP server, but not used this time.
+* **Агентов ИИ:**
+ * `shell_agent`: Выполняет команды оболочки для тестирования.
+ * `research_agent`: Проводит веб-исследование уязвимостей.
+ * `critique_agent`: Консультирует и критикует процесс тестирования.
+ * `planning_agent`: разрабатывает план тестирования с помощью MCP-сервера, но в этот раз не используется.
 
-*   **Tools:**
-    *   Shell command execution.
-    *   Web search (Tavily).
-    *   Pentesting artifact management (credentials, endpoints, etc.).
+* **Инструменты:**
+ * Выполнение команд командной строки.
+ * Веб-поиск (Tavily).
+ * Управление артефактами тестирования (учетные данные, конечные точки и т.д.).
 
-*   **Workflows:**
-    *   A main workflow for executing the pentest.
-    *   A planning workflow for creating the attack plan.
+* **Рабочие процессы:**
+ * Основной рабочий процесс для выполнения пентеста.
+ * Рабочий процесс планирования для создания плана атаки.
 
-*   **Files:**
-    *  task1.ipynb - 1 task solving.
-    *  task2.ipynb - 2 task solving.
-    *  task3.ipynb - 3 task solving.
-    *  task4.ipynb - 4 task solving.
-    *  blanks/prompts.py - prompt for agents (not all had been used).
-    *  func/methods_1.py - methods and tools for agents (not all had been used).
-    * task3_files/* - filse for Sast task.
-    * logs/ - log files
-    * logs/report_task_1.md - 1 task solving report.
-    * logs/report_task_4.md - 4 task solving report.
-
-    
+* **Файлы:**
+ * task1.ipynb - решение задачи 1.
+ * task2.ipynb - решение задачи 2.
+ * task3.ipynb - решение задачи 3.
+ * task4.ipynb - решение задачи 4.
 
 
 
-The project uses GigaChat and OpenAI models.
 
-However, the project appears to be incomplete:
+Для запуска проекта заполните разрешения в файле .env.template. 
+* TAVILY_API_KEY - доспук к поиску в интернете.
+* OPENAI_API_KEY - доступ к моделям OpenAI.
+* GIGACHAT_API_KEY - доступ к моделям Gigachat.
+* CONSOLE_LOG_FILE - файл для сохранения 
+* smithery_api_key - ключ доступа к репозиторию mcp серверов smithery. https://smithery.ai/docs
 
-*   The main entrypoint (`main.py`) is a placeholder and doesn't run the pentesting logic.
-*   There are missing imports and undefined variables in the core logic file (`graph/solver.py`), which will prevent it from running as-is.
-
-This comand to run kali linux docker container to execute comand.
-docker run -it --privileged --name hackathon_eval -v /Users/zheka/Documents/ML/agents/hackaton/hackaton-app:/app -p 3000:3000 -rm  hackathon:v_3
+Запустите докер и выполните команду **"docker run -it --privileged --name hackathon -v /path_to_hackaton_dir:/app -p 3000:3000 kalilinux/kali-rolling"**, где path_to_hackaton_dir - путь к склонированному репозиторию hackaton. Далее в IDE подключаетесь к [докеру](https://dev.to/ctison/vscode-remote-containers-5740), получаете доступ к файлам в папке path_to_hackaton_dir, работать надо из докера, т.к. используются команды Kali linux.
+Запуск агентов производится в блокнотах. Обязательно проверьте IP адреса машины, которую вы используете для тестирования. На хакатоне использовалась машина, доступ к которой получали через WireGuard vpn. 
